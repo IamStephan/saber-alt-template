@@ -1,0 +1,22 @@
+{
+  "plugins": {
+    "posthtml-extend": {
+      "strict": false,
+      "slotTagName": "slot",
+      "fillTagName": "fill",
+      "expressions": {
+        "delimiters": [
+          "[[",
+          "]]"
+        ],
+        "unescapeDelimiters": [
+          "[[",
+          "]]"
+        ],
+        "locals": {
+          "title": "Saber Alt Template"
+        }
+      }
+    }
+  }
+}
