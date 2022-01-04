@@ -1,0 +1,36 @@
+{
+  "name": "posthtml-extend",
+  "version": "1.0.0",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/types.d.ts",
+  "license": "MIT",
+  "targets": {
+    "main": {
+      "context": "node",
+      "outputFormat": "commonjs",
+      "isLibrary": true,
+      "sourceMap": false
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist && parcel build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-typescript-types": "^2.0.1",
+    "@types/lodash": "^4.14.178",
+    "@types/node": "^16.11.11",
+    "parcel": "^2.0.1",
+    "rimraf": "^3.0.2"
+  },
+  "peerDependencies": {
+    "posthtml": "^0.16.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "posthtml": "^0.16.5",
+    "posthtml-expressions": "^1.9.0",
+    "posthtml-extend": "^0.6.2",
+    "posthtml-parser": "^0.10.1"
+  }
+}
