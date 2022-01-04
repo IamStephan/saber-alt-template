@@ -26,4 +26,5 @@ const PostHTMLExtends = (options: IOptions) => (tree: Node) => {
 };
 
 // TODO: Make use of `tree.messages.push` to indicate if changes took place
+// TODO: correct relative imports first before inserting into the main AST
 export default PostHTMLExtends;
