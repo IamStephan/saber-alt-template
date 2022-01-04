@@ -34,6 +34,12 @@
   yarn dev
 ```
 
+**Rebuild all lib packages**
+
+```bash
+  yarn bootstrap:build
+```
+
 **Reset cache**
 
 ```bash
