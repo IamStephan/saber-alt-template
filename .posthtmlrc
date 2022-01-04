@@ -1,21 +1,10 @@
 {
   "plugins": {
-    "posthtml-extend": {
-      "strict": false,
-      "slotTagName": "slot",
-      "fillTagName": "fill",
-      "expressions": {
-        "delimiters": [
-          "[[",
-          "]]"
-        ],
-        "unescapeDelimiters": [
-          "[[",
-          "]]"
-        ],
-        "locals": {
-          "title": "Saber Alt Template"
-        }
+    "posthtml-extends": {},
+    "posthtml-tokens": {
+      "tokens": {
+        "[[hello]]": "WHIIIIIOOOOO",
+        "[[title]]": "Template Project"
       }
     }
   }
