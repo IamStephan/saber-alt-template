@@ -14,4 +14,5 @@ const PostHTMLTokens = (options: IOptions) => (tree: Node) => {
 };
 
 // TODO: Make use of `tree.messages.push` to indicate if changes took place
+// TODO: Add ability to handle namespaced tokens
 export default PostHTMLTokens;
