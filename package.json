@@ -30,6 +30,7 @@
     "posthtml-extend": "^0.6.2",
     "posthtml-extends": "link:./lib/posthtml-extends",
     "posthtml-tokens": "link:./lib/posthtml-tokens",
+    "posthtml-pipeline": "link:./lib/posthtml-pipeline",
     "tailwindcss": "^3.0.8",
     "typescript": ">=3.0.0"
   }

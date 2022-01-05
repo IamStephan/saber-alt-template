@@ -3977,6 +3977,10 @@ posthtml-parser@^0.10.0, posthtml-parser@^0.10.1:
   dependencies:
     htmlparser2 "^7.1.1"
 
+"posthtml-pipeline@link:./lib/posthtml-pipeline":
+  version "0.0.0"
+  uid ""
+
 posthtml-render@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/posthtml-render/-/posthtml-render-3.0.0.tgz#97be44931496f495b4f07b99e903cc70ad6a3205"
