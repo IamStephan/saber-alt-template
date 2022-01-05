@@ -52,7 +52,7 @@
   yarn build
 ```
 
-This builds the files in the src directory and outputs all the necessary file needed by the cms.
+This builds the files in the src directory and outputs all the necessary files needed by the cms.
 
 ## Folders and files
 
@@ -65,16 +65,16 @@ Having a structured approach to template developement is key to a great and main
 - `./dist`
   - Used by the dev server and hot reloading
 - `./prod`
-  - Files that are meant to be consumed by the CMS are in here
+  - Files that are meant to be consumed by the CMS
 - `./src`
   - The bread and butter of the template.
 
 ### The `./src` folder
 
 - `./src/globals`
-  - Styles and HTML 'templates' that are used on all pages. These are guaranteed to be present regardless of the page or page type
+  - Styles and HTML 'templates' that are used on all pages. These are guaranteed to be present regardless of the page or type
 - `./src/pages`
-  - To minimize the download size of pages, pages are split into 4 distinct pages. Each page has their own set of style and structure guarantees
+  - To minimize the download size of pages, pages are split into 5 distinct pages. Each page has their own set of styles and structure guarantees
   - The current list of page types are
     - landing (index)
     - content
@@ -84,16 +84,16 @@ Having a structured approach to template developement is key to a great and main
 - `./src/sections`
   - For ease of use pages are split internally into reusable and swappable sections. Each section has a high level function that it serves. For instance:
     - Hero -> To attract attention and promote the vistor's curiousity
-    - Testimonials -> To instil trust into the vistor's
+    - Testimonials -> To instil trust into the vistor
     - CTA -> to entice the vistor to perform an action (In this case, to get a free estimate)
 - `./src/widgets`
-  - Widgets are dynamic pieces inside of a page. They are not template specific and the purpose of this folder is to provide CSS variable for theming. This can also be used to create widget template that are unique to this template but should be use rarely
+  - Widgets are dynamic pieces of code (PHP) inside of a page. They are not template specific and the purpose of this folder is to provide CSS variables for theming. This can also be used to create widget templates that are unique to this template, but should be used rarely.
 - `./src/components`
   - Like `./src/globals` components are used throughout the site, but they are not guaranteed to be used across all pages. Components need to be small and flexible to reduce size and increase usability
 - `./src/tokens`
-  - Tokens are static string and/or raw html snippets. They come from the cms (Most of the time) and declaring the as such should be sufficient for template development
+  - Tokens are static strings and/or raw html snippets. They come from the cms (Most of the time) and declaring them as such should be sufficient for template development
 - `./src/hybrids`
-  - Hybrids are special type that are similar to two or more of the above folders. Each hybrid has a unique set of behavior that needs custom implementation locally.
+  - Hybrids are special type that are similar to two or more of the above folders. Each hybrid has a unique set of behavior that needs exceptions locally to work.
 
 ## Notes on importing css and js resources
 
