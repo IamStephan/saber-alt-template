@@ -1,7 +1,7 @@
 import { Node } from 'posthtml'
-import match from '../utils/match'
-
-type FillType = 'replace' | 'prepend' | 'append' | ''
+import getNodes from '../utils/getNodes'
+import getFillType from '../utils/getFillType'
+import mergeContent from '../utils/mergeContent'
 
 function _handleSlotFillNodes(layoutTree: Node, useNode: Node) {
   // Get slot and fill Nodes
@@ -35,59 +35,6 @@ function _handleSlotFillNodes(layoutTree: Node, useNode: Node) {
   }
 
   return layoutTree
-}
-
-function mergeContent(
-  fillNode: Node['content'],
-  slotNode: Node['content'],
-  fillType: FillType
-) {
-  fillNode = fillNode || []
-  slotNode = slotNode || []
-
-  switch (fillType) {
-    case 'replace':
-      slotNode = fillNode
-      break
-
-    case 'prepend':
-      slotNode = fillNode.concat(slotNode)
-      break
-
-    case 'append':
-      slotNode = slotNode.concat(fillNode)
-      break
-    default:
-      break
-  }
-
-  return slotNode
-}
-
-function getFillType(node: Node) {
-  let fillType = ((node.attrs && node.attrs.type) || '').toLowerCase()
-
-  if (!['replace', 'prepend', 'append'].includes(fillType)) {
-    fillType = 'replace'
-  }
-
-  return fillType as FillType
-}
-
-function getNodes(tag: 'slot' | 'fill', tree: Node | Node['content']) {
-  const nodes: any = {}
-
-  match(tree, { tag }, node => {
-    if (!node.attrs || !node.attrs.name) {
-      console.warn('No name was provided')
-      return node
-    }
-
-    nodes[node.attrs.name] = node
-    return node
-  })
-
-  return nodes
 }
 
 export default _handleSlotFillNodes
