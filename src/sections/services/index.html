@@ -1,0 +1,134 @@
+<style type="text/scss" lang="scss">
+  @import '/src/utils/section.scss';
+
+  .services-section {
+    @include SectionPadding;
+    @include SectionClamp;
+    @include SectionGap('both');
+    @apply grid grid-cols-3 gap-20;
+
+    &__items {
+      @apply col-span-2 grid grid-cols-2 shadow-2xl;
+    }
+
+    &__item {
+      @apply relative h-60 flex items-end overflow-hidden;
+
+      &:hover {
+        & .services-section__item-container {
+          @apply translate-y-0;
+        }
+      }
+
+      &-image {
+        @apply absolute inset-0 w-full h-full object-cover z-[-1] pointer-events-none;
+      }
+
+      &-container {
+        @apply bg-gray-50 z-10 flex-1 translate-y-full duration-150;
+      }
+
+      &-container-text {
+        @apply px-5 py-4;
+      }
+      &-title {
+        @apply text-template-primary-600 text-lg mb-1;
+      }
+
+      &-text {
+        @apply text-gray-700 line-clamp-1;
+      }
+      &-button {
+        @apply bg-template-primary-600 text-gray-50 block text-center py-2 cursor-pointer hover:bg-template-primary-600/90;
+      }
+    }
+
+    &__info {
+      @apply self-center mb-48;
+
+      &-title {
+        @apply text-template-primary-600 text-4xl font-bold mb-6;
+      }
+      &-text {
+        @apply text-xl text-gray-700;
+      }
+    }
+  }
+</style>
+
+<section class="services-section">
+  <div class="services-section__items">
+    <each loop="item in services">
+      <div class="services-section__item">
+        <img class="services-section__item-image" src="{{item.image}}" />
+        <div class="services-section__item-container">
+          <div class="services-section__item-container-text">
+            <h3 class="services-section__item-title">{{ item.title }}</h3>
+            <p class="services-section__item-text">{{item.description}}</p>
+          </div>
+
+          <a class="services-section__item-button">Learn More</a>
+        </div>
+      </div>
+    </each>
+  </div>
+  <div class="services-section__info">
+    <h2 class="services-section__info-title">
+      Foundation Problems? <br />
+      We Have Your Solution.
+    </h2>
+    <p class="services-section__info-text">
+      From Commercial Foundation Problems to Concrete Cracks, we have the
+      answer.
+    </p>
+  </div>
+</section>
+
+<script locals>
+  module.exports = {
+    services: [
+      {
+        image:
+          'https://cdn.treehouseinternetgroup.com/cms_images/300/srv-img-foundation-repair.jpg',
+        title: 'Foundation Repair',
+        description:
+          'We will find the right solution for your foundation problems.',
+      },
+      {
+        image:
+          'https://cdn.treehouseinternetgroup.com/cms_images/300/srv-img-concrete.jpg',
+        title: 'Concrete Lifting',
+        description:
+          'Quickly & effectively stabilize your sinking, settling concrete!',
+      },
+      {
+        image:
+          'https://cdn.treehouseinternetgroup.com/cms_images/300/srv-img-crawlspace.jpg',
+        title: 'Crawl Space Repair',
+        description:
+          'We offer complete crawl space encapsulation & repair services.',
+      },
+      {
+        image:
+          'https://cdn.treehouseinternetgroup.com/cms_images/300/seawall-bulkhead-repair.png',
+        title: 'Seawall & Bulkhead Repair',
+        description:
+          'Stabilize seawalls & bulkheads with our non-invasive, durable repair services.',
+      },
+      {
+        image:
+          'https://d6449bb3dc657045bfc9-290115cc0d6de62a29c33db202ae565c.ssl.cf1.rackcdn.com/300/srv-img-retrofitting.jpg',
+        title: 'Seismic Retrofitting',
+        description:
+          'Reduce the risk of earthquake damage with professional reinforcements.',
+      },
+      {
+        image:
+          'https://cdn.treehouseinternetgroup.com/cms_images/300/srv-img-commercial.jpg',
+        title: 'Commercial Foundation',
+        description:
+          'We offer proven solutions for existing structures and properties.',
+      },
+    ],
+  }
+</script>
