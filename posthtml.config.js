@@ -1,15 +1,16 @@
 module.exports = {
   plugins: {
-    "posthtml-pipeline": {
+    'posthtml-pipeline': {
       plugins: [
-        require("posthtml-extends").default(),
-        require("posthtml-tokens").default({
+        require('posthtml-extends').default(),
+        require('posthtml-tokens').default({
           tokens: {
-            "[[hello]]": "WHIIIIIOOOOO",
-            "[[title]]": "Template Project",
+            '[[hello]]': 'WHIIIIIOOOOO',
+            '[[title]]': 'Template Project',
           },
         }),
       ],
+      legacyPlugins: [require('posthtml-expressions')()],
     },
   },
-};
+}
