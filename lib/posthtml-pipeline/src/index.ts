@@ -6,6 +6,7 @@ interface IExtendedNode extends Node {
 
 interface IOptions {
   plugins?: Array<Plugin<Node>>
+  legacyPlugins?: Array<Plugin<Node>>
 }
 
 const LOOP_LIMIT = 50
@@ -18,6 +19,7 @@ const PostHTMLExtends = (options: IOptions) => (tree: IExtendedNode) => {
    * ]
    */
   const plugins = options.plugins ?? []
+  const legacyPlugins = options.legacyPlugins ?? []
 
   let _tree = tree
   let isComplete = false
@@ -36,9 +38,11 @@ const PostHTMLExtends = (options: IOptions) => (tree: IExtendedNode) => {
         isComplete = false
       }
     })
-  }
 
-  console.log(loopCounter)
+    legacyPlugins.forEach((plugin) => {
+      _tree = plugin(_tree) as any
+    })
+  }
 
   return _tree
 }
