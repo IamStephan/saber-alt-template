@@ -1,0 +1,118 @@
+<style type="text/scss" lang="scss">
+  @import '/src/utils/section.scss';
+
+  .reviews-section {
+    @include SectionGap('both');
+    @apply bg-gray-50;
+
+    &__wrapper {
+      @include SectionPadding;
+      @include SectionClamp;
+      @apply grid grid-cols-2 gap-20 py-24;
+    }
+
+    &__title {
+      @apply col-span-full text-center text-4xl text-template-primary-600 font-bold;
+    }
+
+    &__items {
+      @apply flex flex-col items-center space-y-12;
+    }
+    &__item {
+      @apply bg-white rounded-3xl shadow-2xl w-full max-w-2xl px-12 py-6 flex space-x-8 items-center;
+    }
+    &__stars {
+      @apply grid grid-cols-6 grid-rows-2 flex-shrink-0;
+
+      & img {
+        @apply col-span-2 w-12 h-12 mx-1;
+        &:nth-child(1) {
+          @apply row-start-1 col-start-2;
+        }
+
+        &:nth-child(2) {
+          @apply row-start-1 col-start-4;
+        }
+
+        &:nth-child(3) {
+          @apply row-start-2 col-start-1;
+        }
+
+        &:nth-child(4) {
+          @apply row-start-2 col-start-3;
+        }
+
+        &:nth-child(5) {
+          @apply row-start-2 col-start-5;
+        }
+      }
+    }
+    &__info {
+      &-review {
+        @apply text-xl mb-6;
+      }
+      &-author {
+        @apply text-sm;
+      }
+    }
+    &__button {
+      @apply bg-gray-900 text-gray-50 rounded-full block font-bold px-12 py-4;
+    }
+    &__video {
+      @apply aspect-w-16 aspect-h-9 bg-gray-700;
+    }
+  }
+</style>
+
+<section class="reviews-section">
+  <div class="reviews-section__wrapper">
+    <h2 class="reviews-section__title">
+      Saber Foundation Repair <br />
+      Reviews and Ratings
+    </h2>
+
+    <div class="reviews-section__items">
+      <each loop="item in reviews">
+        <div class="reviews-section__item">
+          <div class="reviews-section__stars">
+            <each loop="star in [1,2,3,4,5]">
+              <img
+                class=""
+                src="https://cdn.treehouseinternetgroup.com/cms_core/template/layout/site/star-new-full.svg"
+              />
+            </each>
+          </div>
+          <div class="reviews-section__info">
+            <p class="reviews-section__info-review">"{{item.review}}"</p>
+            <p class="reviews-section__info-author">{{item.author}}</p>
+          </div>
+        </div>
+      </each>
+
+      <a class="reviews-section__button">Read More Reviews</a>
+    </div>
+
+    <div class="reviews-section__video">
+      <iframe
+        width="100%"
+        height="100%"
+        src="https://www.youtube.com/embed/xBmpozyUt9M"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<script locals>
+  module.exports = {
+    reviews: [
+      {
+        review: 'Would give Alvin and is crew 10 stars if possible!',
+        author: 'By Thomas T. from La Quinta, CA',
+      },
+      {
+        review: 'Would give Alvin and is crew 10 stars if possible!',
+        author: 'By Thomas T. from La Quinta, CA',
+      },
+    ],
+  }
+</script>
