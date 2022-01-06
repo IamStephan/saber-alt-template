@@ -20,7 +20,7 @@
     "@parcel/transformer-typescript-types": "^2.0.1",
     "@types/lodash": "^4.14.178",
     "@types/node": "^16.11.11",
-    "parcel": "^2.0.1",
+    "parcel": "^2.1.0",
     "rimraf": "^3.0.2"
   },
   "peerDependencies": {
