@@ -1,18 +1,18 @@
-import { IOptions } from "../types/options";
+import { IOptions } from '../types/options'
 
-export const TemplateUseTags: IOptions["useTags"] = {
+export const TemplateUseTags: IOptions['useTags'] = {
   use: {
-    path: "./",
-    default: "",
+    path: './',
+    default: '',
   },
   page: {
-    path: "./src/globals",
-    default: "./page_base.html",
+    path: './src/globals',
+    default: './page_base.html',
   },
   component: {
-    path: "./src/components",
+    path: './src/components',
   },
   widget: {
-    path: "./src/widgets",
+    path: './src/widgets',
   },
-};
+}
