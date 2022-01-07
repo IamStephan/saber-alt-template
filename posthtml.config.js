@@ -1,6 +1,3 @@
-const path = require('path')
-const fs = require('fs')
-
 module.exports = {
   plugins: {
     'posthtml-pipeline': {
@@ -10,42 +7,16 @@ module.exports = {
           tokens: {
             '[[title]]': 'Template Project',
             '[[page_name]]': 'Content Header',
-            '[[city_scroll:50]]': () => {
-              const pathToToken = path.resolve(
-                process.cwd(),
-                './src/tokens/city_scroll.html'
-              )
-              return fs.readFileSync(pathToToken, 'utf8')
-            },
-
-            '[[breadcrumbs]]': () => {
-              const pathToToken = path.resolve(
-                process.cwd(),
-                './src/tokens/breadcrumbs.html'
-              )
-              return fs.readFileSync(pathToToken, 'utf8')
-            },
-            '[[breadcrumbs]]': () => {
-              const pathToToken = path.resolve(
-                process.cwd(),
-                './src/tokens/breadcrumbs.html'
-              )
-              return fs.readFileSync(pathToToken, 'utf8')
-            },
-            '[[single_silo_nav]]': () => {
-              const pathToToken = path.resolve(
-                process.cwd(),
-                './src/tokens/single_silo_nav.html'
-              )
-              return fs.readFileSync(pathToToken, 'utf8')
-            },
-            '[[content]]': () => {
-              const pathToToken = path.resolve(
-                process.cwd(),
-                './src/tokens/content.html'
-              )
-              return fs.readFileSync(pathToToken, 'utf8')
-            },
+            '[[city_scroll:50]]': ({ readFile }) =>
+              readFile('./src/tokens/city_scroll.html'),
+            '[[breadcrumbs]]': ({ readFile }) =>
+              readFile('./src/tokens/breadcrumbs.html'),
+            '[[breadcrumbs]]': ({ readFile }) =>
+              readFile('./src/tokens/breadcrumbs.html'),
+            '[[single_silo_nav]]': ({ readFile }) =>
+              readFile('./src/tokens/single_silo_nav.html'),
+            '[[content]]': ({ readFile }) =>
+              readFile('./src/tokens/content.html'),
           },
         }),
       ],
