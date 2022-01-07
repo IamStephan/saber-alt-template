@@ -1,0 +1,39 @@
+<style type="text/scss" lang="scss">
+  @import '/src/utils/section.scss';
+
+  .projects-section {
+    @include SectionPadding;
+    @include SectionClamp;
+    @include SectionGap('both');
+    @apply grid grid-cols-3 gap-32;
+
+    &__info {
+      @apply flex flex-col items-start mt-40;
+      &-title {
+        @apply text-template-primary-600 text-4xl font-bold mb-6;
+      }
+      &-text {
+        @apply text-xl text-gray-700 mb-8;
+      }
+    }
+    &__before-after {
+      @apply col-span-2 bg-gray-700 aspect-w-16 aspect-h-10 shadow-2xl;
+    }
+  }
+</style>
+
+<section class="projects-section">
+  <div class="projects-section__info">
+    <h2 class="projects-section__info-title">Recent Projects in Southern CA</h2>
+    <p class="projects-section__info-text">
+      From Commercial Foundation Problems to Concrete Cracks, we have the
+      answer.
+    </p>
+    <a class="button">View More Before & After Photos</a>
+  </div>
+  <div class="projects-section__before-after">
+    <!-- Widget Goes here -->
+  </div>
+</section>
+
+<script locals></script>
