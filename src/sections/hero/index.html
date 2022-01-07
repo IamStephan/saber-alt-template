@@ -2,10 +2,18 @@
   @import '/src/utils/section.scss';
 
   .hero-section {
-    @include SectionPadding;
-    @include SectionClamp;
     @include SectionGap('bottom');
-    @apply grid grid-cols-3 gap-20 grid-rows-[auto,auto];
+    @apply relative;
+
+    &__bg {
+      @apply absolute inset-x-0 h-[60%] bg-gray-50 z-[-1];
+    }
+
+    &__wrapper {
+      @include SectionPadding;
+      @include SectionClamp;
+      @apply grid grid-cols-3 gap-20 grid-rows-[auto,auto];
+    }
 
     &__info {
       @apply flex flex-col justify-between pt-12 row-span-2;
@@ -52,39 +60,42 @@
 </style>
 
 <section class="hero-section">
-  <div class="hero-section__info">
-    <div class="hero-section__cta">
-      <h1 class="hero-section__cta-title">
-        California's Residential & Commercial Foundation Repair Experts
-      </h1>
-      <p class="hero-section__cta-text">
-        We are here to help solve your Concrete & Foundation issues
-      </p>
-      <a class="button"> Get a Free Estimate </a>
-    </div>
-    <div class="hero-section__refer">
-      <h2 class="hero-section__refer-title">Previous Customer?</h2>
-      <p class="hero-section__refer-text">Refer us and recieve $100!</p>
-      <div class="hero-section__refer-button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="hero-section__refer-button-arrow"
-        >
-          <path fill="none" d="M0 0h24v24H0z" />
-          <path
-            fill="currentColor"
-            d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"
-          />
-        </svg>
+  <div class="hero-section__wrapper">
+    <div class="hero-section__bg"></div>
+    <div class="hero-section__info">
+      <div class="hero-section__cta">
+        <h1 class="hero-section__cta-title">
+          California's Residential & Commercial Foundation Repair Experts
+        </h1>
+        <p class="hero-section__cta-text">
+          We are here to help solve your Concrete & Foundation issues
+        </p>
+        <a class="button button-primary"> Get a Free Estimate </a>
+      </div>
+      <div class="hero-section__refer">
+        <h2 class="hero-section__refer-title">Previous Customer?</h2>
+        <p class="hero-section__refer-text">Refer us and recieve $100!</p>
+        <div class="hero-section__refer-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="hero-section__refer-button-arrow"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              fill="currentColor"
+              d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"
+            />
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="hero-section__showcase">
-    <img
-      class="hero-section__showcase-image"
-      src="https://cdn.treehouseinternetgroup.com/cms_images/755/showcase.jpg"
-    />
+    <div class="hero-section__showcase">
+      <img
+        class="hero-section__showcase-image"
+        src="https://cdn.treehouseinternetgroup.com/cms_images/755/showcase.jpg"
+      />
+    </div>
   </div>
 </section>
