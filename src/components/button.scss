@@ -1,3 +1,23 @@
+@mixin button {
+  @apply rounded-full text-gray-50 font-bold bg-gray-900 px-12 py-4 cursor-pointer duration-150;
+
+  &:hover {
+    @apply bg-gray-800;
+  }
+}
+
+@mixin button-primary {
+  @apply bg-template-primary-600 px-10 py-5 text-lg;
+
+  &:hover {
+    @apply bg-template-primary-700;
+  }
+}
+
 .button {
-  @apply rounded-full text-gray-50 bg-template-primary-600 px-10 py-5 font-bold text-lg;
+  @include button;
+
+  &-primary {
+    @include button-primary;
+  }
 }
