@@ -32,5 +32,13 @@ const PostHTMLTokens = (options: IOptions) => (tree: IExtendedNode) => {
   }
 }
 
+/**
+ * TODO: Better support for token getters.
+ * =============
+ * Some Tokens are simple file reads. So maybe have a way
+ * to fetch the files without needing to have a function
+ * call.
+ */
+// TODO: Add support for dynamic tokens
 // TODO: Add ability to handle namespaced tokens
 export default PostHTMLTokens
