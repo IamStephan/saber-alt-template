@@ -15,17 +15,25 @@
       @apply col-span-full text-center text-4xl text-template-primary-600 font-bold;
     }
 
+    &__items-container {
+      @apply flex justify-end;
+    }
+
     &__items {
+      max-width: 650px;
       @apply flex flex-col items-center space-y-12;
     }
+
     &__item {
-      @apply bg-white rounded-3xl shadow-2xl w-full max-w-2xl px-12 py-6 flex space-x-8 items-center;
+      @apply bg-white rounded-3xl shadow-2xl w-full px-12 py-6 flex space-x-8 items-center;
     }
+
     &__stars {
       @apply grid grid-cols-6 grid-rows-2 flex-shrink-0;
 
       & img {
-        @apply col-span-2 w-12 h-12 mx-1;
+        @apply col-span-2 w-10 h-10 mx-1;
+
         &:nth-child(1) {
           @apply row-start-1 col-start-2;
         }
@@ -47,6 +55,7 @@
         }
       }
     }
+
     &__info {
       &-review {
         @apply text-xl mb-6;
@@ -54,9 +63,6 @@
       &-author {
         @apply text-sm;
       }
-    }
-    &__button {
-      @apply bg-gray-900 text-gray-50 rounded-full block font-bold px-12 py-4;
     }
     &__video {
       @apply aspect-w-16 aspect-h-9 bg-gray-700;
@@ -71,25 +77,28 @@
       Reviews and Ratings
     </h2>
 
-    <div class="reviews-section__items">
-      <each loop="item in reviews">
-        <div class="reviews-section__item">
-          <div class="reviews-section__stars">
-            <each loop="star in [1,2,3,4,5]">
-              <img
-                class=""
-                src="https://cdn.treehouseinternetgroup.com/cms_core/template/layout/site/star-new-full.svg"
-              />
-            </each>
-          </div>
-          <div class="reviews-section__info">
-            <p class="reviews-section__info-review">"{{item.review}}"</p>
-            <p class="reviews-section__info-author">{{item.author}}</p>
-          </div>
-        </div>
-      </each>
+    <div class="reviews-section__items-container">
+      <div class="reviews-section__items">
+        <each loop="item in reviews">
+          <div class="reviews-section__item">
+            <div class="reviews-section__stars">
+              <each loop="star in [1,2,3,4,5]">
+                <img
+                  class=""
+                  src="https://cdn.treehouseinternetgroup.com/cms_core/template/layout/site/star-new-full.svg"
+                />
+              </each>
+            </div>
 
-      <a class="reviews-section__button">Read More Reviews</a>
+            <div class="reviews-section__info">
+              <p class="reviews-section__info-review">"{{item.review}}"</p>
+              <p class="reviews-section__info-author">{{item.author}}</p>
+            </div>
+          </div>
+        </each>
+
+        <a class="button">Read More Reviews</a>
+      </div>
     </div>
 
     <div class="reviews-section__video">
