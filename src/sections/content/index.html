@@ -1,0 +1,50 @@
+<style type="text/scss" lang="scss">
+  @import '/src/utils/section.scss';
+
+  .content-section {
+    @include SectionPadding;
+    @include SectionClamp('md');
+    @include SectionGap('bottom');
+
+    @apply grid grid-cols-8 grid-rows-[auto,auto] gap-x-16 gap-y-8 mt-12;
+
+    &__breadcrumbs {
+      @apply col-span-6 col-start-3 row-start-1;
+      @apply flex bg-gray-100 ring-1 ring-gray-200 rounded py-2 px-4;
+    }
+
+    &__silo {
+      @apply col-span-2 col-start-1 row-start-1 row-end-[-1];
+
+      &-container {
+        @apply flex bg-gray-100 ring-1 ring-gray-200 rounded py-2 px-4 sticky top-8;
+      }
+    }
+
+    &__article {
+      @apply col-span-6 col-start-3 row-start-2 prose max-w-none;
+    }
+  }
+</style>
+
+<style type="text/scss" lang="scss" foreign>
+  .content-section__breadcrumbs {
+    .separator {
+      @apply px-2;
+    }
+
+    .bread_crumb_active {
+      @apply font-bold text-template-primary-600;
+    }
+  }
+</style>
+
+<section class="content-section">
+  <nav class="content-section__breadcrumbs">[[breadcrumbs]]</nav>
+
+  <aside class="content-section__silo">
+    <div class="content-section__silo-container">[[single_silo_nav]]</div>
+  </aside>
+
+  <article class="content-section__article">[[content]]</article>
+</section>
