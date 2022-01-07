@@ -1,0 +1,29 @@
+<style type="text/scss" lang="scss">
+  @import '/src/utils/section.scss';
+
+  .content-header-section {
+    @apply relative;
+    &__bg {
+      @apply bg-gray-700 absolute inset-0 z-[-1];
+    }
+
+    &__wrapper {
+      @include SectionPadding;
+      @include SectionClamp('md');
+
+      @apply pb-12 pt-40;
+    }
+
+    &__header {
+      @apply text-gray-50 text-6xl font-bold;
+    }
+  }
+</style>
+
+<section class="content-header-section">
+  <div class="content-header-section__bg"></div>
+
+  <div class="content-header-section__wrapper">
+    <h1 class="content-header-section__header">[[page_name]]</h1>
+  </div>
+</section>
