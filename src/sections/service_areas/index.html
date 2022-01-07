@@ -1,0 +1,87 @@
+<style type="text/scss" lang="scss">
+  @import '/src/utils/section.scss';
+
+  .sa-section {
+    @include SectionGap('top');
+    @apply relative;
+
+    &__wrapper {
+      @include SectionPadding;
+      @include SectionClamp;
+      @apply grid grid-cols-5 gap-20 py-24;
+    }
+
+    &__bg {
+      @apply absolute inset-0 bg-gray-700 z-[-1];
+    }
+
+    &__list {
+      /* @apply justify-self-end; */
+      @apply bg-white rounded-3xl px-24 py-16 col-span-2;
+
+      &-title {
+        @apply text-template-primary-600 text-4xl font-bold mb-4;
+      }
+
+      &-content {
+      }
+    }
+  }
+</style>
+
+<style foreign type="text/scss" lang="scss">
+  @import '/src/components/button.scss';
+
+  .sa-section__list-content {
+    h3 {
+      @apply text-gray-700 text-xl mb-6;
+    }
+    /* 
+    The top level class prefix is nested inside
+    the class names with a suffix.
+  */
+    .city_scroll_list {
+      &_container {
+        @apply max-h-full;
+      }
+
+      &_content {
+        @apply max-h-96 overflow-y-scroll py-1 pl-4;
+
+        li {
+          @apply py-0.5;
+        }
+
+        a {
+          @apply underline;
+        }
+      }
+
+      &_local_phone {
+        @apply inline-block font-medium pt-6;
+      }
+
+      &_footer {
+        @apply mt-6;
+
+        a {
+          @include button;
+          @apply inline-block;
+        }
+      }
+    }
+  }
+</style>
+
+<section class="sa-section">
+  <div class="sa-section__bg">
+    <!-- Map Goes here -->
+  </div>
+  <div class="sa-section__wrapper">
+    <div class="sa-section__list">
+      <h2 class="sa-section__list-title">Our Service Areas</h2>
+
+      <div class="sa-section__list-content">[[city_scroll:50]]</div>
+    </div>
+  </div>
+</section>
