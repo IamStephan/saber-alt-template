@@ -16,6 +16,18 @@
   }
 }
 
-@mixin SectionClamp {
-  @apply max-w-screen-3xl mx-auto;
+@mixin SectionClamp($size: 'lg') {
+  @apply mx-auto;
+
+  @if $size == 'sm' {
+    @apply max-w-screen-xl;
+  }
+
+  @if $size == 'md' {
+    @apply max-w-screen-2xl;
+  }
+
+  @if $size == 'lg' {
+    @apply max-w-screen-3xl;
+  }
 }
