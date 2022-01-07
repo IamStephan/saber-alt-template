@@ -2,6 +2,7 @@ import 'core-js'
 import { merge } from 'lodash'
 import { parser as parseHtml } from 'posthtml-parser'
 import { render as renderHtml, Node as RenderNode } from 'posthtml-render'
+import { readFile } from './utils'
 import { IOptions } from './types/options'
 import { IExtendedNode } from './types/node'
 
@@ -16,7 +17,7 @@ const PostHTMLTokens = (options: IOptions) => (tree: IExtendedNode) => {
     if (NodeString.includes(token)) {
       isAltered = true
       if (typeof value === 'function') {
-        const _value = value()
+        const _value = value({ readFile })
         NodeString = NodeString.replaceAll(token, _value)
       } else {
         NodeString = NodeString.replaceAll(token, value)
