@@ -1,9 +1,5 @@
 import { Node, Plugin } from 'posthtml'
 
-interface IExtendedNode extends Node {
-  messages: Array<any>
-}
-
 interface IOptions {
   plugins?: Array<Plugin<Node>>
   legacyPlugins?: Array<Plugin<Node>>
@@ -11,7 +7,7 @@ interface IOptions {
 
 const LOOP_LIMIT = 50
 
-const PostHTMLExtends = (options: IOptions) => (tree: IExtendedNode) => {
+const PostHTMLExtends = (options: IOptions) => (tree: Node) => {
   /**
    * Plugins are declared like this:
    * plugins: [
@@ -30,12 +26,15 @@ const PostHTMLExtends = (options: IOptions) => (tree: IExtendedNode) => {
     loopCounter++
 
     plugins.forEach((plugin) => {
-      const { tree, isAltered } = plugin(_tree) as any
+      const { tree, isAltered, messages } = plugin(_tree) as any
 
       _tree = tree
-
-      if (isAltered) {
-        isComplete = false
+      for (let i = 0; i < messages.length; i++) {
+        const message = messages[i]
+        if (message.type === 'altered_dom') {
+          isComplete = false
+          break
+        }
       }
     })
 
@@ -47,4 +46,18 @@ const PostHTMLExtends = (options: IOptions) => (tree: IExtendedNode) => {
   return _tree
 }
 
+/**
+ * NOTE:
+ * ======
+ * The message array that PostHTML suggests for passing info
+ * the other plugins does not work. The idea gets ignored by
+ * basically all plugins so they just remove the array.
+ *
+ * So split plugins into two categories; Pipeline-based and
+ * legacy. Legacy plugins continue altering the tree as they
+ * always have. Pipeline based plugins should return an object.
+ * This then allows messages to be passed to other pipeline
+ * plugins. The pipline should continue running until the tree
+ * is solved or after the loop limit is reached
+ */
 export default PostHTMLExtends
