@@ -7,15 +7,17 @@ import { IOptions } from './types/options'
 import { IExtendedNode } from './types/node'
 
 const PostHTMLTokens = (options: IOptions) => (tree: IExtendedNode) => {
+  const messages = []
   let _tree = tree
-  let isAltered = false
   let NodeString = renderHtml(_tree as RenderNode)
 
   const _globalTokens = merge({}, options.tokens ?? {})
 
   for (let [token, value] of Object.entries(_globalTokens)) {
     if (NodeString.includes(token)) {
-      isAltered = true
+      messages.push({
+        type: 'altered_dom',
+      })
       if (typeof value === 'function') {
         const _value = value({ readFile })
         NodeString = NodeString.replaceAll(token, _value)
@@ -29,7 +31,7 @@ const PostHTMLTokens = (options: IOptions) => (tree: IExtendedNode) => {
 
   return {
     tree: _tree,
-    isAltered,
+    messages,
   }
 }
 

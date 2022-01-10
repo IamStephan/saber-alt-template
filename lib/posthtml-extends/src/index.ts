@@ -14,12 +14,13 @@ const DefaultOptions: Partial<IOptions> = {
 
 const PostHTMLExtends = (options: IOptions) => (tree: Node) => {
   const mergedOptions = merge(DefaultOptions, options)
+  const messages: Array<any> = []
 
-  const { tree: _tree, isAltered } = _handleUseTags(tree, mergedOptions)
+  const _tree = _handleUseTags(tree, mergedOptions, messages)
 
   return {
     tree: _tree,
-    isAltered,
+    messages,
   }
 }
 

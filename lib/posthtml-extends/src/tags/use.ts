@@ -7,15 +7,22 @@ import getNodePath from '../utils/getNodePath'
 import _handleSlotFill from '../tags/slotFill'
 import { IOptions } from '../types/options'
 
-export default function _handleUseNodes(tree: Node, options: IOptions) {
+export default function _handleUseNodes(
+  tree: Node,
+  options: IOptions,
+  messages: Array<any>
+) {
   const nodeExp = Object.keys(options.useTags).map((tag) => ({ tag }))
   let _tree = tree
-  let _isAltered = false
 
   match(_tree, nodeExp, (useNode) => {
     let useNodeContentPath: string
     let useNodeContent: string
-    _isAltered = true
+
+    // This is a reference item
+    messages.push({
+      type: 'altered_dom',
+    })
 
     try {
       useNodeContentPath = getNodePath(useNode, options.useTags)
@@ -43,8 +50,5 @@ export default function _handleUseNodes(tree: Node, options: IOptions) {
     return useNode
   })
 
-  return {
-    tree: _tree,
-    isAltered: _isAltered,
-  }
+  return _tree
 }
