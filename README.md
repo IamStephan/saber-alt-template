@@ -104,7 +104,7 @@ This is a limitation of caused by `posthtml-extends`. Files are first created th
 
 ## Notes on HTML templates/modules
 
-To import/use a html template use the `<extends src="[path_to_template]">` tag. The path should be used from the perspective of the `./src` folder. For example, to use the page base template, the src attribute should be `./src/globals/page_base.html`
+To import/use a html template use the `<use src="[path_to_template]">` tag. The path should be used from the perspective of the `./src` folder. For example, to use the page base template, the src attribute should be `./src/globals/page_base.html`
 
 ## Tech Stack
 
