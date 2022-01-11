@@ -1,47 +1,97 @@
 import 'core-js'
-import { merge } from 'lodash'
-import { parser as parseHtml } from 'posthtml-parser'
-import { render as renderHtml, Node as RenderNode } from 'posthtml-render'
+import { merge, get } from 'lodash'
+import { Node } from 'posthtml'
 import { readFile } from './utils'
 import { IOptions } from './types/options'
-import { IExtendedNode } from './types/node'
 
-const PostHTMLTokens = (options: IOptions) => (tree: IExtendedNode) => {
-  const messages = []
-  let _tree = tree
-  let NodeString = renderHtml(_tree as RenderNode)
+type TTokenState = Record<string, string | Function>
+type TMessages = Array<{
+  type: string
+}>
 
-  const _globalTokens = merge({}, options.tokens ?? {})
+const _handleTokens = (
+  node: Node,
+  tokenState: TTokenState,
+  messages: Array<any>
+) => {
+  // Handle nodes with string contents
+  if (typeof node === 'string') {
+    let _node = node as string
 
-  for (let [token, value] of Object.entries(_globalTokens)) {
-    if (NodeString.includes(token)) {
-      messages.push({
-        type: 'altered_dom',
-      })
-      if (typeof value === 'function') {
-        const _value = value({ readFile })
-        NodeString = NodeString.replaceAll(token, _value)
-      } else {
-        NodeString = NodeString.replaceAll(token, value)
+    for (let [token, value] of Object.entries(tokenState)) {
+      if (_node.includes(token)) {
+        messages.push({
+          type: 'altered_dom',
+        })
+
+        if (typeof value === 'function') {
+          const _value = value({ readFile })
+          _node = _node.replaceAll(token, _value)
+        } else {
+          _node = _node.replaceAll(token, value as string)
+        }
       }
     }
+
+    return _node
   }
 
-  _tree = parseHtml(NodeString) as any
+  if (node.attrs) {
+    // maybe there's a better way to check for tokens in node objects
+  }
+
+  return node
+}
+
+const _PostHTMLTokens = (options: IOptions) => (tree: Node) => {
+  const messages: TMessages = []
+  const _tokenNamespaces = merge({}, options.tokens ?? {})
+
+  function traverse(
+    tree: Node,
+    tokenState: TTokenState,
+    messages: TMessages,
+    cb: Function
+  ) {
+    if (Array.isArray(tree)) {
+      for (let i = 0; i < tree.length; i++) {
+        const _node = tree[i] as Node
+
+        if (_node.attrs && _node.attrs['token-scope']) {
+          const tokenScope = _node.attrs['token-scope']
+
+          tokenState = merge(tokenState, get(_tokenNamespaces, tokenScope))
+        }
+
+        tree[i] = traverse(
+          cb(tree[i], tokenState, messages),
+          tokenState,
+          messages,
+          cb
+        )
+      }
+    } else if (
+      tree &&
+      typeof tree === 'object' &&
+      Object.prototype.hasOwnProperty.call(tree, 'content')
+    ) {
+      traverse(tree.content as any, tokenState, messages, cb)
+    }
+
+    return tree
+  }
+
+  traverse(tree, {}, messages, _handleTokens)
 
   return {
-    tree: _tree,
+    tree: tree,
     messages,
   }
 }
 
+// TODO: Add support for dynamic tokens (Maybe with a script tag like posthtml expressions does)
 /**
- * TODO: Better support for token getters.
- * =============
- * Some Tokens are simple file reads. So maybe have a way
- * to fetch the files without needing to have a function
- * call.
+ * Note on Tokens:
+ * Tokens can only be inside attributes or string contents
  */
-// TODO: Add support for dynamic tokens
-// TODO: Add ability to handle namespaced tokens
-export default PostHTMLTokens
+export default _PostHTMLTokens

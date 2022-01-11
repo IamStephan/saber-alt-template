@@ -1,13 +1,11 @@
-export type TToken = [string, string];
+export type TToken = [string, string]
 
-export type TScopedTokens = [TToken];
+export type TScopedTokens = [TToken]
 
 export interface IOptions {
-  mode: "development" | "production";
+  mode: 'development' | 'production'
   /**
-   * @description Used to override the default tokens in the
-   *              Global scope. DO NOT use this to add new
-   *              tokens.
+   * @description Token scopes
    */
-  tokens: Record<string, string | Function>;
+  tokens: Record<string, Record<string, string | Function>>
 }
