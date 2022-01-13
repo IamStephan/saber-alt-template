@@ -12,17 +12,11 @@ const DefaultOptions: Partial<IOptions> = {
   },
 }
 
-const PostHTMLExtends = (options: IOptions) => (tree: Node) => {
-  const mergedOptions = merge(DefaultOptions, options)
-  const messages: Array<any> = []
-
-  const _tree = _handleUseTags(tree, mergedOptions, messages)
-
-  return {
-    tree: _tree,
-    messages,
+const PostHTMLExtends =
+  (options: IOptions) => (tree: Node, messages: Array<any>) => {
+    const mergedOptions = merge(DefaultOptions, options)
+    return _handleUseTags(tree, mergedOptions, messages)
   }
-}
 
 // TODO: correct relative imports first before inserting into the main AST
 export default PostHTMLExtends
