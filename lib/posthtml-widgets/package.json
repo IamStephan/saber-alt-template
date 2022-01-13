@@ -1,0 +1,33 @@
+{
+  "name": "posthtml-widgets",
+  "version": "1.0.0",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/types.d.ts",
+  "license": "MIT",
+  "targets": {
+    "main": {
+      "context": "node",
+      "outputFormat": "commonjs",
+      "isLibrary": true,
+      "sourceMap": false
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist && parcel build"
+  },
+  "devDependencies": {
+    "@types/core-js": "^2.5.5",
+    "@types/lodash": "^4.14.178",
+    "@types/node": "^17.0.7",
+    "parcel": "^2.1.1",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "core-js": "^3.20.2",
+    "lodash": "^4.17.21",
+    "posthtml": "^0.16.5",
+    "posthtml-parser": "^0.10.1",
+    "posthtml-render": "^3.0.0"
+  }
+}
