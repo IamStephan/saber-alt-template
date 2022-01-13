@@ -1,7 +1,7 @@
 module.exports = {
   plugins: {
     'posthtml-pipeline': {
-      plugins: [
+      pipelinePlugins: [
         require('posthtml-extends').default(),
         require('posthtml-tokens').default({
           tokens: {
@@ -24,8 +24,9 @@ module.exports = {
             },
           },
         }),
+        require('posthtml-widgets').default(),
       ],
-      legacyPlugins: [require('posthtml-expressions')()],
+      plugins: [require('posthtml-expressions')()],
     },
   },
 }
