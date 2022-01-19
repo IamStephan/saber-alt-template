@@ -5,29 +5,47 @@
     @include SectionPadding;
     @include SectionClamp;
     @include SectionGap('both');
-    @apply grid grid-cols-5 gap-20;
+    @apply grid grid-cols-5 gap-20
+      lg:grid-cols-4;
 
     &__info {
-      @apply col-span-3;
+      @apply col-span-3
+        lg:col-span-2
+        md:col-span-full;
+
       &-title {
-        @apply text-4xl font-bold text-template-primary-600 mb-10;
+        @apply mb-10
+          lg:mb-8
+          md:mb-6
+          sm:mb-4;
       }
       &-text {
-        @apply text-gray-700 mb-10 last:mb-0 text-lg;
+        @apply text-gray-700 mb-10 last:mb-0 text-lg
+          md:text-base md:mb-6
+          sm:mb-4;
       }
     }
 
     &__showcase {
-      @apply col-span-2 bg-gray-700 shadow-2xl;
+      @apply col-span-2 bg-gray-700 shadow-2xl
+        lg:self-start lg:h-96 lg:sticky lg:top-6
+        md:hidden;
+
+      &-mobile {
+        @apply hidden h-60 bg-gray-700 mb-6
+          md:block
+          sm:mb-4;
+      }
     }
   }
 </style>
 
 <section class="about-section">
   <div class="about-section__info">
-    <h2 class="about-section__info-title">
+    <h2 class="about-section__info-title title">
       Southern CA's Local Foundation Repair & Concrete Leveling Contractor
     </h2>
+    <div class="about-section__showcase-mobile"></div>
     <p class="about-section__info-text">
       A foundation problem can have a huge impact on your home's safety and
       structural integrity, which is why it's essential to have foundation
