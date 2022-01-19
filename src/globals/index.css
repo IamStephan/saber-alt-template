@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import '/src/components/button.scss';
+@import '/src/components/title.scss';
