@@ -2,17 +2,26 @@
   @import '/src/utils/section.scss';
 
   .services-section {
+  }
+  .services-section {
     @include SectionPadding;
     @include SectionClamp;
     @include SectionGap('both');
-    @apply grid grid-cols-3 gap-20;
+
+    @apply grid grid-cols-3 gap-20
+      lg:gap-12
+      md:gap-6
+      sm:gap-4;
 
     &__items {
-      @apply col-span-2 grid grid-cols-2 shadow-2xl;
+      @apply col-span-2 grid grid-cols-2 shadow-2xl
+        lg:col-span-full
+        sm:grid-cols-1 sm:shadow-none sm:gap-4;
     }
 
     &__item {
-      @apply relative h-60 flex items-end overflow-hidden;
+      @apply relative h-60 flex items-end overflow-hidden
+        sm:shadow-xl;
 
       &:hover {
         & .services-section__item-container {
@@ -25,12 +34,14 @@
       }
 
       &-container {
-        @apply bg-gray-50 z-10 flex-1 translate-y-full duration-150;
+        @apply bg-gray-50 z-10 flex-1 translate-y-full duration-150
+          sm:translate-y-0;
       }
 
       &-container-text {
         @apply px-5 py-4;
       }
+
       &-title {
         @apply text-template-primary-600 text-lg mb-1;
       }
@@ -38,19 +49,24 @@
       &-text {
         @apply text-gray-700 line-clamp-1;
       }
+
       &-button {
-        @apply bg-template-primary-600 text-gray-50 block text-center py-2 cursor-pointer hover:bg-template-primary-600/90;
+        @apply bg-template-primary-600 text-gray-50 block text-center py-2 cursor-pointer hover:bg-template-primary-600/90
+          sm:hidden;
       }
     }
 
     &__info {
-      @apply self-center mb-48;
+      @apply self-center mb-48
+        lg:col-span-full lg:row-start-1 lg:mb-0;
 
       &-title {
-        @apply text-template-primary-600 text-4xl font-bold mb-6;
+        @apply mb-6
+          md:mb-4
+          sm:mb-2;
       }
       &-text {
-        @apply text-xl text-gray-700;
+        /* Pass through */
       }
     }
   }
@@ -73,11 +89,11 @@
     </each>
   </div>
   <div class="services-section__info">
-    <h2 class="services-section__info-title">
+    <h2 class="services-section__info-title title">
       Foundation Problems? <br />
       We Have Your Solution.
     </h2>
-    <p class="services-section__info-text">
+    <p class="services-section__info-text subtitle">
       From Commercial Foundation Problems to Concrete Cracks, we have the
       answer.
     </p>
