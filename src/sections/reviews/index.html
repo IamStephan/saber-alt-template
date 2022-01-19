@@ -8,24 +8,36 @@
     &__wrapper {
       @include SectionPadding;
       @include SectionClamp;
-      @apply grid grid-cols-2 gap-20 py-24;
+      @apply grid grid-cols-2 gap-20 py-24
+        lg:gap-16
+        md:gap-12
+        sm:gap-8;
     }
 
     &__title {
-      @apply col-span-full text-center text-4xl text-template-primary-600 font-bold;
+      @apply col-span-full text-center
+      lg:text-left;
     }
 
     &__items-container {
-      @apply flex justify-end;
+      @apply flex justify-end relative
+        lg:col-span-full
+        sm:justify-center;
     }
 
     &__items {
       max-width: 650px;
-      @apply flex flex-col items-center space-y-12;
+      @apply flex flex-col items-center space-y-12
+        lg:space-y-8
+        md:space-y-6
+        sm:space-y-4 sm:flex-1;
     }
 
     &__item {
-      @apply bg-white rounded-3xl shadow-2xl w-full px-12 py-6 flex space-x-8 items-center;
+      @apply bg-white rounded-3xl shadow-2xl w-full px-12 py-6 flex space-x-8 items-center
+        xl:flex-col xl:justify-center xl:space-x-0 xl:space-y-4
+        lg:flex-row lg:space-x-8 lg:space-y-0
+        sm:flex-col sm:justify-center sm:space-x-0 sm:space-y-6 sm:px-6 sm:py-4;
     }
 
     &__stars {
@@ -58,21 +70,28 @@
 
     &__info {
       &-review {
-        @apply text-xl mb-6;
+        @apply text-xl mb-6
+          md:text-lg
+          sm:text-center;
       }
       &-author {
-        @apply text-sm;
+        @apply text-sm
+          md:text-xs
+          sm:text-center;
       }
     }
+
     &__video {
-      @apply aspect-w-16 aspect-h-9 bg-gray-700;
+      @apply aspect-w-16 aspect-h-9 bg-gray-700
+        xl:self-start
+        lg:col-span-full lg:row-start-2;
     }
   }
 </style>
 
 <section class="reviews-section">
   <div class="reviews-section__wrapper">
-    <h2 class="reviews-section__title">
+    <h2 class="reviews-section__title title">
       Saber Foundation Repair <br />
       Reviews and Ratings
     </h2>
