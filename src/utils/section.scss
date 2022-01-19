@@ -1,18 +1,26 @@
 @mixin SectionPadding {
-  @apply px-6 md:px-10 lg:px-14;
+  @apply px-16
+    md:px-10
+    sm:px-6;
 }
 
 @mixin SectionGap($pos: 'both') {
   @if $pos == 'both' {
-    @apply my-20 md:my-32 lg:my-48;
+    @apply my-48
+      md:my-32
+      sm:my-20;
   }
 
   @if $pos == 'top' {
-    @apply mt-20 md:mt-32 lg:mt-48;
+    @apply mt-48
+      md:mt-32
+      sm:mt-20;
   }
 
   @if $pos == 'bottom' {
-    @apply mb-20 md:mb-32 lg:mb-48;
+    @apply mb-48
+      md:mb-32
+      sm:mb-20;
   }
 }
 
