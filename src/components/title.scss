@@ -1,7 +1,13 @@
 .title {
-  @apply text-4xl text-template-primary-600 font-bold;
+  @apply text-4xl text-template-primary-600 font-bold
+    md:text-3xl
+    sm:text-2xl
+    xs:text-xl;
 }
 
-.subtext {
-  @apply text-2xl text-gray-700;
+.subtitle {
+  @apply text-2xl text-gray-700
+    md:text-xl
+    sm:text-lg
+    xs:text-base;
 }
