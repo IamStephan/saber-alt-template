@@ -5,34 +5,63 @@
     @include SectionPadding;
     @include SectionClamp;
     @include SectionGap('both');
-    @apply grid grid-cols-3 gap-32;
+    @apply grid grid-cols-3 gap-32
+      xl:grid-cols-2 xl:gap-24
+      lg:grid-cols-1 lg:gap-8;
 
     &__info {
-      @apply flex flex-col items-start mt-40;
+      @apply flex flex-col items-start mt-40
+        xl:mt-0 xl:self-end;
+
       &-title {
-        @apply text-template-primary-600 text-4xl font-bold mb-6;
+        @apply mb-6
+          md:mb-4
+          sm:mb-2;
       }
+
       &-text {
-        @apply text-xl text-gray-700 mb-8;
+        @apply mb-8
+          lg:mb-0;
+      }
+
+      &-cta {
+        @apply lg:hidden;
+        .button {
+          @apply block;
+        }
+
+        &-mobile {
+          @apply hidden justify-center
+            lg:flex;
+        }
       }
     }
+
     &__before-after {
-      @apply col-span-2 bg-gray-700 aspect-w-16 aspect-h-10 shadow-2xl;
+      @apply col-span-2 bg-gray-700 aspect-w-16 aspect-h-10 shadow-2xl
+        xl:col-span-1;
     }
   }
 </style>
 
 <section class="projects-section">
   <div class="projects-section__info">
-    <h2 class="projects-section__info-title">Recent Projects in Southern CA</h2>
-    <p class="projects-section__info-text">
+    <h2 class="projects-section__info-title title">
+      Recent Projects in Southern CA
+    </h2>
+    <p class="projects-section__info-text subtitle">
       From Commercial Foundation Problems to Concrete Cracks, we have the
       answer.
     </p>
-    <a class="button">View More Before & After Photos</a>
+    <div class="projects-section__info-cta">
+      <a class="button">View More Before & After Photos</a>
+    </div>
   </div>
   <div class="projects-section__before-after">
     <!-- Widget Goes here -->
     <widget />
+  </div>
+  <div class="projects-section__info-cta-mobile">
+    <a class="button">View More Before & After Photos</a>
   </div>
 </section>
