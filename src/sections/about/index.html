@@ -10,8 +10,7 @@
 
     &__info {
       @apply col-span-3
-        lg:col-span-2
-        md:col-span-full;
+        lg:col-span-full;
 
       &-title {
         @apply mb-10
@@ -28,12 +27,11 @@
 
     &__showcase {
       @apply col-span-2 bg-gray-700 shadow-2xl
-        lg:self-start lg:h-96 lg:sticky lg:top-6
-        md:hidden;
+        lg:self-start lg:h-96 lg:sticky lg:top-6 lg:hidden;
 
       &-mobile {
         @apply hidden h-60 bg-gray-700 mb-6
-          md:block
+          lg:block
           sm:mb-4;
       }
     }
