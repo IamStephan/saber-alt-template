@@ -1,5 +1,6 @@
 @mixin button {
-  @apply rounded-full text-gray-50 font-bold bg-gray-900 px-12 py-4 cursor-pointer duration-150;
+  @apply rounded-full text-gray-50 font-bold bg-gray-900 px-12 py-4 cursor-pointer duration-150 text-center
+    sm:text-sm sm:px-8 sm:py-3;
 
   &:hover {
     @apply bg-gray-800;
