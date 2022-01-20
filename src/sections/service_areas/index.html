@@ -16,11 +16,15 @@
     }
 
     &__list {
-      /* @apply justify-self-end; */
-      @apply bg-white rounded-3xl px-24 py-16 col-span-2;
+      @apply bg-white rounded-3xl px-24 py-16 col-span-2
+        2xl:col-span-3
+        lg:col-span-4 lg:px-16 lg:py-12
+        md:col-span-full md:px-12 md:py-8
+        sm:px-8 sm:py-6;
 
       &-title {
-        @apply text-template-primary-600 text-4xl font-bold mb-4;
+        @apply mb-4
+          sm:mb-2;
       }
 
       &-content {
@@ -31,10 +35,15 @@
 
 <style foreign type="text/scss" lang="scss">
   @import '/src/components/button.scss';
+  @import '/src/components/title.scss';
+  @import '/src/components/scrollbar.scss';
 
   .sa-section__list-content {
     h3 {
-      @apply text-gray-700 text-xl mb-6;
+      @include subtitle;
+      @apply mb-6
+        md:mb-4
+        sm:mb-2;
     }
     /* 
     The top level class prefix is nested inside
@@ -46,7 +55,10 @@
       }
 
       &_content {
-        @apply max-h-96 overflow-y-scroll py-1 pl-4;
+        @include scrollbar;
+        @apply max-h-96 overflow-y-scroll py-1 pl-4
+          md:max-h-64
+          sm:pl-2 sm:max-h-52;
 
         li {
           @apply py-0.5;
@@ -79,7 +91,7 @@
   </div>
   <div class="sa-section__wrapper">
     <div class="sa-section__list">
-      <h2 class="sa-section__list-title">Our Service Areas</h2>
+      <h2 class="sa-section__list-title title">Our Service Areas</h2>
 
       <div class="sa-section__list-content">[[city_scroll:50]]</div>
     </div>
