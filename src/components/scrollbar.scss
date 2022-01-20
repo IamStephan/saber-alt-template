@@ -1,0 +1,17 @@
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    @apply w-4;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply bg-[#F8F8F8] rounded-full;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-[#E8E8E8] rounded-full;
+  }
+}
+
+.scrollbar {
+  @include scrollbar();
+}
