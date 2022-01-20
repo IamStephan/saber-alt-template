@@ -16,7 +16,7 @@
 
     &__title {
       @apply col-span-full text-center
-      lg:text-left;
+        lg:text-left;
     }
 
     &__items-container {
@@ -44,7 +44,9 @@
       @apply grid grid-cols-6 grid-rows-2 flex-shrink-0;
 
       & img {
-        @apply col-span-2 w-10 h-10 mx-1;
+        @apply col-span-2 w-10 h-10 mx-1
+          md:w-8 md:h-8
+          sm:w-6 sm:h-6;
 
         &:nth-child(1) {
           @apply row-start-1 col-start-2;
