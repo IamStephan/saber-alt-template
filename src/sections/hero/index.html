@@ -21,11 +21,15 @@
 
     &__cta {
       &-title {
-        @apply text-template-primary-600 text-4xl font-bold mb-6;
+        @apply mb-6
+          md:mb-4
+          sm:mb-2;
       }
 
       &-text {
-        @apply text-2xl text-gray-700 mb-12;
+        @apply mb-12
+          md:mb-8
+          sm:mb-4;
       }
     }
 
@@ -42,6 +46,10 @@
 
       &-button {
         @apply w-14 h-14 rounded-full bg-template-primary-600 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2;
+
+        &:hover {
+          @apply bg-template-primary-700 cursor-pointer;
+        }
 
         &-arrow {
           @apply text-gray-50;
@@ -64,11 +72,10 @@
     <div class="hero-section__bg"></div>
     <div class="hero-section__info" token-scope="test">
       <div class="hero-section__cta">
-        <h1 class="hero-section__cta-title">
+        <h1 class="hero-section__cta-title title">
           California's Residential & Commercial Foundation Repair Experts
-          [[title]]
         </h1>
-        <p class="hero-section__cta-text">
+        <p class="hero-section__cta-text subtitle">
           We are here to help solve your Concrete & Foundation issues
         </p>
         <a class="button button-primary"> Get a Free Estimate </a>
@@ -76,7 +83,7 @@
       <div class="hero-section__refer">
         <h2 class="hero-section__refer-title">Previous Customer?</h2>
         <p class="hero-section__refer-text">Refer us and recieve $100!</p>
-        <div class="hero-section__refer-button">
+        <a class="hero-section__refer-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -88,7 +95,7 @@
               d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"
             />
           </svg>
-        </div>
+        </a>
       </div>
     </div>
 
