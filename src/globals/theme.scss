@@ -1,0 +1,23 @@
+@function toRGB($color) {
+  @return red($color) + ', ' + green($color) + ', ' + blue($color);
+}
+
+:root {
+  /* Colors */
+  --color-template-primary-50: #{toRGB(#fff3f1)};
+  --color-template-primary-100: #{toRGB(#ffe4e0)};
+  --color-template-primary-200: #{toRGB(#ffcdc5)};
+  --color-template-primary-300: #{toRGB(#ffaa9d)};
+  --color-template-primary-400: #{toRGB(#ff7a65)};
+  --color-template-primary-500: #{toRGB(#fe5035)};
+  --color-template-primary-600: #{toRGB(#ed3f24)};
+  --color-template-primary-700: #{toRGB(#c7270e)};
+  --color-template-primary-800: #{toRGB(#a42410)};
+  --color-template-primary-900: #{toRGB(#882414)};
+
+  /* Borders */
+
+  /* Shadows */
+
+  /* Spacing */
+}
