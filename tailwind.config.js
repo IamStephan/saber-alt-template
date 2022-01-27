@@ -1,7 +1,7 @@
 module.exports = {
   content: ['./src/**/*.{html,css}'],
   presets: [
-    require('./lib/tailwindcss-preset-colors'),
+    require('./lib/tailwindcss-preset-themable'),
     require('./lib/tailwindcss-preset-screens'),
   ],
   plugins: [
