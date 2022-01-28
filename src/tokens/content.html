@@ -1812,7 +1812,7 @@
       }
       a.wt-5333-prev::before,
       a.wt-5333-next::before {
-        content: "";
+        content: '';
         border: 15px solid transparent;
         position: absolute;
         transition: all 0.2s ease;
@@ -1847,7 +1847,7 @@
       .wt-5333-next-wrapper:hover a.wt-5333-next::before {
         border-left: 15px solid rgba(255, 255, 255, 1);
       }
-      .wt-5333-thumb div[class*="label"] {
+      .wt-5333-thumb div[class*='label'] {
         height: 45px;
         bottom: 0;
         font-size: 16px;
@@ -1904,7 +1904,7 @@
         clear: both;
       }
       li.wt-5333-li::after {
-        content: "";
+        content: '';
         height: 300px;
         width: 3px;
         background: #fff;
@@ -1974,29 +1974,29 @@
     </style>
     <script>
       function alignThumbs_5333() {
-        $(".wt-5333-thumb img:visible").each(function () {
-          var diff = $(this).height() - 178;
+        $('.wt-5333-thumb img:visible').each(function () {
+          var diff = $(this).height() - 178
           if (diff > 0) {
-            var top = Math.floor(diff / 2);
-            $(this).css("top", "-" + top + "px");
+            var top = Math.floor(diff / 2)
+            $(this).css('top', '-' + top + 'px')
           }
-        });
+        })
       }
       $(document).ready(function () {
-        $(".wt-5333").thScrollable({
+        $('.wt-5333').thScrollable({
           showItems: 1,
-          prevElement: ".wt-5333-prev-wrapper",
-          nextElement: ".wt-5333-next-wrapper",
-          itemElement: "li",
+          prevElement: '.wt-5333-prev-wrapper',
+          nextElement: '.wt-5333-next-wrapper',
+          itemElement: 'li',
           onChange: function () {
-            alignThumbs_5333();
+            alignThumbs_5333()
           },
-        });
-      });
+        })
+      })
 
       $(window).load(function () {
-        alignThumbs_5333();
-      });
+        alignThumbs_5333()
+      })
     </script>
   </p>
   <div class="wt-5333 inline-beforeafter-wide">
