@@ -1,0 +1,15 @@
+@mixin breadcrumbsContent {
+  @apply flex flex-wrap;
+
+  .separator {
+    @apply mx-2;
+  }
+
+  [itemprop='itemListElement']:not(:last-of-type) {
+    @apply font-semibold hover:underline;
+  }
+
+  [itemprop='itemListElement']:last-of-type {
+    @apply text-gray-50 underline font-bold;
+  }
+}
