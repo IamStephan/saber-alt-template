@@ -1,40 +1,54 @@
 <style type="text/scss" lang="scss">
   @import '/src/utils/section.scss';
+  @import '/src/components/silo.scss';
+  @import '/src/components/breadcrumbs.scss';
 
   .content-section {
     @include SectionPadding;
     @include SectionClamp('md');
     @include SectionGap('bottom');
 
-    @apply grid grid-cols-8 grid-rows-[auto,auto] gap-x-16 gap-y-8 mt-12;
+    @apply grid grid-cols-8 grid-rows-[auto,auto] gap-x-16 gap-y-8 mt-12
+      lg:grid-cols-1 lg:grid-rows-[auto,auto,auto];
 
     &__breadcrumbs {
-      @apply col-span-6 col-start-3 row-start-1;
-      @apply flex bg-gray-100 ring-1 ring-gray-200 rounded py-2 px-4;
+      @include breadcrumbsContent;
+      @apply col-span-6 col-start-3 row-start-1 flex ring-1 ring-gray-900 bg-template-primary-600 text-white ring-opacity-10 py-2 px-4 shadow-2xl
+        xl:col-span-5 xl:col-start-4
+        lg:col-span-full lg:row-start-2 lg:row-end-3;
     }
 
     &__silo {
-      @apply col-span-2 col-start-1 row-start-1 row-end-[-1];
+      @apply col-span-2 col-start-1 row-start-1 row-end-[-1]
+        xl:col-span-3
+        lg:col-span-full lg:row-start-1 lg:row-end-2;
 
       &-container {
-        @apply flex bg-gray-100 ring-1 ring-gray-200 rounded py-2 px-4 sticky top-8;
+        @include siloContent;
+        @apply sticky top-4 ring-1 ring-gray-900 ring-opacity-10 shadow-2xl
+          lg:hidden;
+      }
+
+      &-mobile {
+        @apply hidden justify-center
+          lg:flex;
+
+        &-button {
+          @apply flex items-center space-x-3
+            md:py-3 md:px-6;
+
+          svg {
+            @apply h-6 w-6;
+          }
+        }
       }
     }
 
     &__article {
-      @apply col-span-6 col-start-3 row-start-2 prose max-w-none;
-    }
-  }
-</style>
-
-<style type="text/scss" lang="scss" foreign>
-  .content-section__breadcrumbs {
-    .separator {
-      @apply px-2;
-    }
-
-    .bread_crumb_active {
-      @apply font-bold text-template-primary-600;
+      @apply col-span-6 col-start-3 row-start-2 prose max-w-none prose-neutral 
+        xl:col-span-5 xl:col-start-4
+        lg:col-span-full lg:max-w-[100vw] lg:row-start-3 lg:row-end-4
+        md:prose-sm;
     }
   }
 </style>
@@ -43,7 +57,18 @@
   <nav class="content-section__breadcrumbs">[[breadcrumbs]]</nav>
 
   <aside class="content-section__silo">
-    <div class="content-section__silo-container">[[single_silo_nav]]</div>
+    <div class="content-section__silo-mobile">
+      <button class="content-section__silo-mobile-button button button-primary">
+        <span> Open Menu </span>
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </div>
+    <nav class="content-section__silo-container">[[single_silo_nav]]</nav>
   </aside>
 
   <article class="content-section__article">[[content]]</article>
