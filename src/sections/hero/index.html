@@ -5,103 +5,136 @@
     @include SectionGap('bottom');
     @apply relative;
 
-    &__bg {
-      @apply absolute inset-x-0 h-[60%] bg-gray-50 z-[-1];
-    }
-
     &__wrapper {
       @include SectionPadding;
       @include SectionClamp;
-      @apply grid grid-cols-3 gap-20 grid-rows-[auto,auto];
+      @apply grid grid-cols-[2fr,5fr]
+      xl:px-0 xl:grid-cols-1 sm:mt-8;
     }
 
-    &__info {
-      @apply flex flex-col justify-between pt-12 row-span-2;
+    &__bg {
+      @apply absolute inset-x-0 top-0 bg-gray-50 h-[60%] z-[-10]
+        md:h-[25%];
     }
 
-    &__cta {
-      &-title {
-        @apply mb-6
-          md:mb-4
-          sm:mb-2;
+    &__content {
+      &-header {
+        @apply mt-12;
+
+        @screen xl {
+          @include SectionPadding;
+        }
+
+        &-text {
+          @apply mb-8
+            md:mb-6
+            sm:mb-4;
+        }
       }
 
-      &-text {
-        @apply mb-12
-          md:mb-8
-          sm:mb-4;
+      &-info {
+        @apply rounded-sm mb-44
+          xl:max-w-xl xl:mx-auto xl:flex xl:flex-col xl:px-6 xl:py-4 xl:mb-8 xl:shadow-2xl xl:bg-white
+          md:mx-8;
+
+        &-text {
+          @apply mb-8
+            md:mb-6
+            sm:mb-4;
+        }
+
+        .button {
+          @apply inline-block;
+        }
       }
     }
 
     &__refer {
-      @apply rounded-3xl ring-2 ring-template-primary-500 pt-6 pb-10 px-10 mb-7 self-start relative;
+      @apply border-2 bg-white shadow-2xl border-template-primary-600 p-8 rounded-3xl inline-block relative mb-12
+          sm:px-6 sm:pt-4 sm:pb-6;
 
-      &-title {
-        @apply text-template-primary-600 text-center font-bold text-2xl;
+      &-wrapper {
+        @apply flex justify-start
+          xl:justify-center;
       }
 
+      &-heading {
+        @apply text-template-primary-600 font-bold text-xl text-center
+            sm:text-base;
+      }
       &-text {
-        @apply text-template-primary-600 text-lg text-center;
+        @apply text-template-primary-600 font-medium text-center
+            sm:text-sm;
       }
+      &-action {
+        @apply absolute w-12 h-12 bg-template-primary-600 rounded-full bottom-0 left-1/2 transform translate-y-1/2 -translate-x-1/2
+            sm:w-8 sm:h-8;
 
-      &-button {
-        @apply w-14 h-14 rounded-full bg-template-primary-600 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2;
-
-        &:hover {
-          @apply bg-template-primary-700 cursor-pointer;
-        }
-
-        &-arrow {
-          @apply text-gray-50;
+        &::before {
+          content: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M8 6.41421L9.4142 5L16.4853 12.071L9.4142 19.1421L8 17.7279L13.6569 12.071L8 6.41421Z' fill='white' /%3E%3C/svg%3E");
+          @apply w-8 h-8 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2
+              sm:w-6 sm:h-6;
         }
       }
     }
 
     &__showcase {
-      @apply col-span-2 bg-gray-600 h-[700px] row-span-2 shadow-2xl relative;
+      &-desktop {
+        @apply relative ml-28
+          xl:hidden;
 
-      &-image {
-        @apply absolute inset-0 w-full h-full object-cover;
+        img {
+          @apply absolute inset-0 w-full h-full object-cover shadow-2xl;
+        }
+      }
+
+      &-mobile {
+        @apply aspect-h-6 aspect-w-16 z-[-10] relative hidden mb-[-10%]
+          xl:block
+          sm:aspect-h-10 sm:aspect-w-16;
+
+        img {
+          @apply object-cover absolute inset-0 w-full h-full;
+        }
       }
     }
   }
 </style>
 
 <section class="hero-section">
+  <div class="hero-section__bg"></div>
   <div class="hero-section__wrapper">
-    <div class="hero-section__bg"></div>
-    <div class="hero-section__info" token-scope="test">
-      <div class="hero-section__cta">
-        <h1 class="hero-section__cta-title title">
+    <div class="hero-section__content-wrapper">
+      <div class="hero-section__content-header">
+        <h1 class="hero-section__content-header-text title">
           California's Residential & Commercial Foundation Repair Experts
         </h1>
-        <p class="hero-section__cta-text subtitle">
+      </div>
+
+      <div class="hero-section__showcase-mobile">
+        <img
+          src="https://cdn.treehouseinternetgroup.com/cms_images/755/showcase.jpg"
+        />
+      </div>
+
+      <div class="hero-section__content-info">
+        <p class="hero-section__content-info-text subtitle">
           We are here to help solve your Concrete & Foundation issues
         </p>
         <a class="button button-primary"> Get a Free Estimate </a>
       </div>
-      <div class="hero-section__refer">
-        <h2 class="hero-section__refer-title">Previous Customer?</h2>
-        <p class="hero-section__refer-text">Refer us and recieve $100!</p>
-        <a class="hero-section__refer-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="hero-section__refer-button-arrow"
-          >
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path
-              fill="currentColor"
-              d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"
-            />
-          </svg>
-        </a>
+
+      <div class="hero-section__refer-wrapper">
+        <div class="hero-section__refer">
+          <p class="hero-section__refer-heading">Previous Customer?</p>
+          <p class="hero-section__refer-text">Refer us and receive $100!</p>
+          <a class="hero-section__refer-action" href="/refer"></a>
+        </div>
       </div>
     </div>
 
-    <div class="hero-section__showcase">
+    <div class="hero-section__showcase-desktop">
       <img
-        class="hero-section__showcase-image"
         src="https://cdn.treehouseinternetgroup.com/cms_images/755/showcase.jpg"
       />
     </div>
