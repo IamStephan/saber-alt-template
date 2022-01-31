@@ -29,7 +29,6 @@ module.exports = {
             },
           },
         }),
-        require('posthtml-widgets').default(),
       ],
       plugins: [require('posthtml-expressions')()],
     },
