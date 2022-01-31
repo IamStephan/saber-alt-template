@@ -6,12 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>[[title]]</title>
 
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="../globals/index.css" />
     <link rel="stylesheet" href="../globals/theme.scss" />
   </head>
   <body>
+    <header>
+      <use src="./src/sections/header/index.html"></use>
+    </header>
+
     <main>
       <slot name="content"></slot>
     </main>
+
+    <footer>
+      <use src="./src/sections/footer/index.html"></use>
+    </footer>
   </body>
 </html>
