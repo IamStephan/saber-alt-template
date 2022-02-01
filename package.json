@@ -14,8 +14,7 @@
     "parcel:build": "parcel build src/pages/*.html --no-source-maps",
     "clean": "rm -rf dist .parcel-cache",
     "dev": "npm-run-all -s clean -p parcel:serve",
-    "build": "npm-run-all -s clean -p parcel:build",
-    "deploy": "yarn build && push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
+    "build": "yarn bootstrap && yarn parcel:build"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.1.1",
@@ -36,7 +35,6 @@
     "posthtml-pipeline": "link:./lib/posthtml-pipeline",
     "posthtml-tokens": "link:./lib/posthtml-tokens",
     "posthtml-widgets": "link:./lib/posthtml-widgets",
-    "push-dir": "^0.4.1",
     "tailwindcss": "^3.0.8",
     "typescript": ">=3.0.0"
   }
