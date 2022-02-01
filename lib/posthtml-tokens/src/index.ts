@@ -22,30 +22,48 @@ const _handleTokens = (
   tokenState: TTokenState,
   messages: Array<any>
 ) => {
-  // Handle nodes with string contents
-  if (typeof node === 'string') {
-    let _node = node as string
+  const _replaceToken = (text: string, shouldLog?: boolean) => {
+    let _text = text
 
     for (let [token, value] of Object.entries(tokenState)) {
-      if (_node.includes(token)) {
+      if (text.includes(token)) {
         messages.push({
           type: 'altered_dom',
         })
 
+        if (shouldLog) {
+          console.log('found change')
+        }
+
         if (typeof value === 'function') {
           const _value = value({ readFile })
-          _node = _node.replaceAll(token, _value)
+          _text = text.replaceAll(token, _value)
         } else {
-          _node = _node.replaceAll(token, value as string)
+          _text = text.replaceAll(token, value as string)
         }
       }
     }
 
-    return _node
+    return _text
+  }
+  // Handle nodes with string contents
+  if (typeof node === 'string') {
+    return _replaceToken(node as string)
   }
 
+  // Hanle tokens in attributes
   if (node.attrs) {
-    // maybe there's a better way to check for tokens in node objects
+    /**
+     * NOTE:
+     * ======
+     * Instead of looping over node attributes, I'm converting the
+     * obj to a string, replacing them and reconvert to an obj.
+     *
+     * This is much faster than looping over every attr of a node
+     * and checking/replacing tokens.
+     */
+    let _attr = JSON.stringify(node.attrs)
+    node.attrs = JSON.parse(_replaceToken(_attr))
   }
 
   return node
