@@ -1,5 +1,5 @@
 @mixin button {
-  @apply rounded-full text-gray-50 font-bold bg-gray-900 px-12 py-4 cursor-pointer duration-150 text-center
+  @apply rounded-full text-gray-50 font-bold bg-gray-900 px-12 py-4 cursor-pointer duration-150 text-center no-underline
     sm:text-sm sm:px-8 sm:py-3;
 
   &:hover {
@@ -15,7 +15,7 @@
   }
 }
 
-.button {
+.button.button.button {
   @include button;
 
   &-primary {
