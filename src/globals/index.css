@@ -6,6 +6,10 @@
 @import '/src/components/title.scss';
 @import '/src/components/scrollbar.scss';
 
+body,
 html {
+  /* NOTE
+      This causes issue with any item that is sticky
+  */
   @apply overflow-x-hidden;
 }
