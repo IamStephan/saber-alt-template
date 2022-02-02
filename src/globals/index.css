@@ -5,6 +5,7 @@
 @import '/src/components/button.scss';
 @import '/src/components/title.scss';
 @import '/src/components/scrollbar.scss';
+@import '/src/components/related_pages.scss';
 
 body,
 html {
