@@ -33,56 +33,8 @@
   }
 </style>
 
-<style foreign type="text/scss" lang="scss">
-  @import '/src/components/button.scss';
-  @import '/src/components/title.scss';
-  @import '/src/components/scrollbar.scss';
-
-  .sa-section__list-content {
-    h3 {
-      @include subtitle;
-      @apply mb-6
-        md:mb-4
-        sm:mb-2;
-    }
-    /* 
-    The top level class prefix is nested inside
-    the class names with a suffix.
-  */
-    .city_scroll_list {
-      &_container {
-        @apply max-h-full;
-      }
-
-      &_content {
-        @include scrollbar;
-        @apply max-h-96 overflow-y-scroll py-1 pl-4
-          md:max-h-64
-          sm:pl-2 sm:max-h-52;
-
-        li {
-          @apply py-0.5;
-        }
-
-        a {
-          @apply underline;
-        }
-      }
-
-      &_local_phone {
-        @apply inline-block font-medium pt-6;
-      }
-
-      &_footer {
-        @apply mt-6;
-
-        a {
-          @include button;
-          @apply inline-block;
-        }
-      }
-    }
-  }
+<style foreign>
+  @import '/src/sections/service_areas/city_scroll.scss';
 </style>
 
 <section class="sa-section">
