@@ -1,0 +1,39 @@
+.footer-section__links {
+  @apply pl-[55px] pt-[20px]
+    md:mb-5 md:p-0 md:mx-auto md:max-w-[500px];
+
+  // Main Container for the category
+  > ul {
+    // The category title
+    > .footer-link {
+      @apply uppercase font-bold w-1/2 float-left
+        sm:float-none sm:w-full sm:text-center;
+
+      &:first-of-type {
+        @apply w-full;
+
+        ul {
+          columns: 2;
+
+          @screen sm {
+            columns: 1;
+          }
+        }
+      }
+
+      ul {
+        @apply mb-6
+          sm:flex sm:flex-col sm:items-center sm:text-center;
+
+        li {
+          @apply capitalize py-0.5 text-sm hover:underline font-light;
+        }
+      }
+    }
+  }
+
+  #social-footer-icons {
+    @apply flex space-x-4 clear-both
+      sm:justify-center;
+  }
+}
