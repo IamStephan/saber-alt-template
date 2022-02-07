@@ -7,14 +7,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "bootstrap:build": "node ./bootstrap/build.js",
-    "bootstrap:install": "node ./bootstrap/install.js",
-    "bootstrap": "yarn run bootstrap:install && yarn run bootstrap:build",
     "parcel:serve": "parcel serve src/pages/*.html --no-source-maps",
     "parcel:build": "parcel build src/pages/*.html --no-source-maps",
     "clean": "rm -rf dist .parcel-cache",
     "dev": "npm-run-all -s clean -p parcel:serve",
-    "build": "yarn bootstrap && yarn parcel:build"
+    "build": "yarn parcel:build"
   },
   "devDependencies": {
     "@parcel/packager-ts": "^2.1.1",
@@ -36,10 +33,6 @@
     "postcss": "^8.4.5",
     "posthtml-expressions": "^1.9.0",
     "posthtml-extend": "^0.6.2",
-    "posthtml-extends": "link:./lib/posthtml-extends",
-    "posthtml-pipeline": "link:./lib/posthtml-pipeline",
-    "posthtml-tokens": "link:./lib/posthtml-tokens",
-    "posthtml-widgets": "link:./lib/posthtml-widgets",
     "tailwindcss": "^3.0.8",
     "typescript": ">=3.0.0"
   }
