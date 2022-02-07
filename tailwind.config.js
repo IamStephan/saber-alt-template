@@ -1,9 +1,9 @@
 module.exports = {
   content: ['./src/**/*.{html,css}'],
   presets: [
-    require('./lib/tailwindcss-preset-themable'),
+    require('@ut-essentials/tailwindcss-preset-themable'),
     require('./lib/tailwindcss-preset-typography'),
-    require('./lib/tailwindcss-preset-screens'),
+    require('@ut-essentials/tailwindcss-preset-screens'),
   ],
   plugins: [
     require('@tailwindcss/typography'),

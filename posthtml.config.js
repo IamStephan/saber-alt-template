@@ -1,9 +1,9 @@
 module.exports = {
   plugins: {
-    'posthtml-pipeline': {
+    '@ut-essentials/posthtml-pipeline': {
       pipelinePlugins: [
-        require('posthtml-extends').default(),
-        require('posthtml-tokens').default({
+        require('@ut-essentials/posthtml-extends').default(),
+        require('@ut-essentials/posthtml-tokens').default({
           tokens: {
             global: {
               '[[title]]': 'Template Project',
