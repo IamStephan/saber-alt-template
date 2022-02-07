@@ -71,6 +71,8 @@ Having a structured approach to template developement is key to a great and main
 
 ### The `./src` folder
 
+- `./src/globals`
+  - Styles and HTML 'templates' that are used on all pages. These are guaranteed to be present regardless of the page or type
 - `./src/pages`
   - To minimize the download size of pages, pages are split into 5 distinct pages. Each page has their own set of styles and structure guarantees
   - The current list of page types are
@@ -84,19 +86,17 @@ Having a structured approach to template developement is key to a great and main
     - Hero -> To attract attention and promote the vistor's curiousity
     - Testimonials -> To instil trust into the vistor
     - CTA -> to entice the vistor to perform an action (In this case, to get a free estimate)
-- `./src/widgets`
-  - Widgets are dynamic pieces of code (PHP) inside of a page. They are not template specific and the purpose of this folder is to provide CSS variables for theming. This can also be used to create widget templates that are unique to this template, but should be used rarely.
 - `./src/components`
   - Like `./src/globals` components are used throughout the site, but they are not guaranteed to be used across all pages. Components need to be small and flexible to reduce size and increase usability
+- `./src/tokens`
+  - Tokens are static strings and/or raw html snippets. They come from the cms (Most of the time) and declaring them as such should be sufficient for template development
 
 ### Deprecated folders
 
 These folders are set to be removed in future version of this project; they need to be extracted into their own projects and tools. The reasoning behind this is for simplicity's sake. By having these folders inside a site project means that the developer needs a working-knowledge of how widgets, tokens and hybrids work, increasing the barrier to creating sites. By removing them developers can contribute to sites with a lower barrier to entry.
 
-- `./src/globals`
-  - Styles and HTML 'templates' that are used on all pages. These are guaranteed to be present regardless of the page or type
-- `./src/tokens`
-  - Tokens are static strings and/or raw html snippets. They come from the cms (Most of the time) and declaring them as such should be sufficient for template development
+- `./src/widgets`
+  - Widgets are dynamic pieces of code (PHP) inside of a page. They are not template specific and the purpose of this folder is to provide CSS variables for theming. This can also be used to create widget templates that are unique to this template, but should be used rarely.
 - `./src/hybrids`
   - Hybrids are special type that are similar to two or more of the above folders. Each hybrid has a unique set of behavior that needs exceptions locally to work.
 
