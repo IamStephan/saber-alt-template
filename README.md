@@ -22,22 +22,10 @@
   cd project-name
 ```
 
-**Bootstrap project**
-
-```bash
-  yarn bootstrap
-```
-
 **Start the dev server**
 
 ```bash
   yarn dev
-```
-
-**Rebuild all lib packages**
-
-```bash
-  yarn bootstrap:build
 ```
 
 **Reset cache**
